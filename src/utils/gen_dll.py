@@ -1,6 +1,5 @@
 import pefile
-import os.path
-
+import os
 
 def gen_def(dll_name: str):
     result = ""

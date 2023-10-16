@@ -1,4 +1,4 @@
-unsigned char code[] = "";
+extern "C" int payload(void);
 
 BOOL WINAPI DllMain(
     HINSTANCE hinstDLL,

