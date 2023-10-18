@@ -1,5 +1,5 @@
 import argparse
-from gen_dll_def import gen_def
+from src.utils.gen_dll import gen_def,read_template_content
 
 parser = argparse.ArgumentParser(description='Streamlines the process of hijacking DLL\'s with configurable payloads.')
 parser.add_argument('target', help='the target DLL you want to proxy to')
@@ -12,6 +12,7 @@ def main():
     def_filename = args.target + ".def"
     with open(def_filename, 'w', encoding='utf-8') as f:
         f.write(dll_def)
+    #TODO: compile template and link with compiled assembly
 
 
 if __name__ == '__main__':
