@@ -1,18 +1,18 @@
 import argparse
-from src.utils.gen_dll import gen_def,read_template_content
+
+from src.generators.PayloadGenerator import PayloadGenerator
+from src.utils.payload_args import parse_payload_args
 
 parser = argparse.ArgumentParser(description='Streamlines the process of hijacking DLL\'s with configurable payloads.')
 parser.add_argument('target', help='the target DLL you want to proxy to')
-parser.add_argument('-p','--payload', help='the name of the payload to use')
+parser.add_argument('-p', '--payload', help='the name of the payload to use', required=True)
+parser.add_argument('-a', '--args', help='the arguments for the payload to use e.g ip=127.0.0.1,port=4444')
 
 
 def main():
     args = parser.parse_args()
-    dll_def = gen_def(args.target)
-    def_filename = args.target + ".def"
-    with open(def_filename, 'w', encoding='utf-8') as f:
-        f.write(dll_def)
-    #TODO: compile template and link with compiled assembly
+    payload_args = parse_payload_args(args.args)
+    PayloadGenerator.generate_payload(args.payload, args.target, payload_args)
 
 
 if __name__ == '__main__':

@@ -1,1 +1,4 @@
-git .idea/
+.git
+.idea/
+__pycache__/
+__init__.py

@@ -1,4 +1,4 @@
-extern "C" int payload(void);
+#include "payload.h"
 
 BOOL WINAPI DllMain(
     HINSTANCE hinstDLL,
@@ -8,7 +8,7 @@ BOOL WINAPI DllMain(
     switch( fdwReason )
     {
         case DLL_PROCESS_ATTACH:
-            void (*payload)() = (void(*)())code;
+            payload();
             break;
         case DLL_THREAD_ATTACH:
             break;
